@@ -13,6 +13,8 @@ import { VerMascotaComponent } from './components/ver-mascota/ver-mascota.compon
 //Angular material
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { MatTableModule } from '@angular/material/table';
     ,BrowserAnimationsModule
     ,MatSliderModule
     ,MatTableModule
+    ,MatPaginatorModule
+    ,MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
