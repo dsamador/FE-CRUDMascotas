@@ -16,8 +16,6 @@ const listMascotas: Mascota[] = [
 ];
 
 
-
-
 @Component({
   selector: 'app-listado-mascota',
   templateUrl: './listado-mascota.component.html',
@@ -31,9 +29,9 @@ export class ListadoMascotaComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator! : MatPaginator;
   @ViewChild(MatSort) sort! : MatSort;
 
-  const initialSelection = [];
-  const allowMultiSelect = true;
-  this.selection = new SelectionModel<Mascota>(allowMultiSelect, initialSelection);
+  //const initialSelection = [];
+  //const allowMultiSelect = true;
+  //this.selection = new SelectionModel<Mascota>(allowMultiSelect, initialSelection);
 
 
   constructor() { }
@@ -42,6 +40,11 @@ export class ListadoMascotaComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.paginator._intl.itemsPerPageLabel = 'Items por pagina';
     this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   ngOnInit() {

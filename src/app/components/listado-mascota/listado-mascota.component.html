@@ -2,6 +2,10 @@
   <h1>Listado de mascotas</h1>
 </div>
 <div class="container">
+  <mat-form-field appareance="standard">
+    <mat-label>Filtrar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input autocomplete="off">
+  </mat-form-field>
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
