@@ -10,11 +10,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+     CommonModule
     ,MatSliderModule
     ,MatTableModule
     ,MatPaginatorModule
@@ -24,9 +25,10 @@ import { MatButtonModule } from '@angular/material/button';
     ,MatIconModule
     ,MatTooltipModule
     ,MatButtonModule
+    ,MatCardModule
   ],
   exports:[
-    MatSliderModule
+     MatSliderModule
     ,MatTableModule
     ,MatPaginatorModule
     ,MatSortModule
@@ -35,6 +37,7 @@ import { MatButtonModule } from '@angular/material/button';
     ,MatIconModule
     ,MatTooltipModule
     ,MatButtonModule
+    ,MatCardModule
   ]
 })
 export class SharedModule { }
