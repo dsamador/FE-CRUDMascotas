@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { MatGridListModule } from '@angular/material/grid-list';
 //Componentes
 import { SpinnerComponent } from './spinner/spinner.component';
 
@@ -35,6 +35,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ,MatCardModule
     ,MatSnackBarModule
     ,MatProgressBarModule
+    ,MatGridListModule
   ],
   exports:[
      MatSliderModule
@@ -50,6 +51,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ,MatSnackBarModule
     ,SpinnerComponent
     ,MatProgressBarModule
+    ,MatGridListModule
   ]
 })
 export class SharedModule { }
