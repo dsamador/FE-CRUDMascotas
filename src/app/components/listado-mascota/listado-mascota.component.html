@@ -1,6 +1,9 @@
 <div class="title">
   <h1>Listado de mascotas</h1>
 </div>
+
+<app-spinner *ngIf="loading"></app-spinner>
+
 <div class="container">
   <mat-form-field appareance="standard">
     <mat-label>Filtrar</mat-label>
@@ -46,7 +49,8 @@
           matTooltip="ver" class="search" fontIcon="search"></mat-icon>
         <mat-icon routerLink="/editarMascota/1"
           matTooltip="editar" class="edit" fontIcon="edit"></mat-icon>
-        <mat-icon matTooltip="borrar" class="delete" fontIcon="delete"></mat-icon>
+        <mat-icon (click)="eliminarMascota()"
+          matTooltip="borrar" class="delete" fontIcon="delete"></mat-icon>
       </td>
     </ng-container>
 
