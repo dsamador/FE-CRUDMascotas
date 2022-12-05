@@ -38,11 +38,14 @@
         <button
           class="agregar"
           mat-raised-button
+          routerLink="/agregarMascota"
           color="primary">Crear registro</button>
       </th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon matTooltip="ver" class="search" fontIcon="search"></mat-icon>
-        <mat-icon matTooltip="editar" class="edit" fontIcon="edit"></mat-icon>
+        <mat-icon routerLink="/verMascota/1"
+          matTooltip="ver" class="search" fontIcon="search"></mat-icon>
+        <mat-icon routerLink="/editarMascota/1"
+          matTooltip="editar" class="edit" fontIcon="edit"></mat-icon>
         <mat-icon matTooltip="borrar" class="delete" fontIcon="delete"></mat-icon>
       </td>
     </ng-container>
