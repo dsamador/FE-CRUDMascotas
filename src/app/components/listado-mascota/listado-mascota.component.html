@@ -4,7 +4,7 @@
 
 <app-spinner *ngIf="loading"></app-spinner>
 
-<div class="container">
+<div *ngIf="dataSource.data.length > 0" class="container">
   <mat-form-field appareance="standard">
     <mat-label>Filtrar</mat-label>
     <input matInput (keyup)="applyFilter($event)"

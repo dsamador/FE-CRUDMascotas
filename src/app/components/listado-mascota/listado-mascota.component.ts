@@ -4,17 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Mascota } from 'src/app/interfaces/mascota';
 import {MatSnackBar} from '@angular/material/snack-bar';
-
-const listMascotas: Mascota[] = [
-  {nombre: 'Hydrogen', edad: 1, raza: 'H', color: 'Dorado', peso: 1},
-  {nombre: 'Hydrogen1', edad: 1, raza: 'H', color: 'Dorado', peso: 1},
-  {nombre: 'Hydrogen2', edad: 1, raza: 'H', color: 'Dorado', peso: 1},
-  {nombre: 'Hydrogen3', edad: 1, raza: 'H', color: 'Dorado', peso: 1},
-  {nombre: 'Hydrogen4', edad: 1, raza: 'H', color: 'Dorado', peso: 1},
-  {nombre: 'Hydrogen5', edad: 1, raza: 'H', color: 'Dorado', peso: 1},
-  {nombre: 'Hydrogen6', edad: 1, raza: 'H', color: 'Dorado', peso: 1},
-];
-
+import { MascotaService } from 'src/app/services/mascota.service';
 
 @Component({
   selector: 'app-listado-mascota',
@@ -24,18 +14,21 @@ const listMascotas: Mascota[] = [
 export class ListadoMascotaComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['nombre', 'edad', 'raza', 'color', 'peso', 'acciones'];
-  dataSource = new MatTableDataSource<Mascota>(listMascotas);
+  dataSource = new MatTableDataSource<Mascota>();
   loading: boolean = false;
 
   @ViewChild(MatPaginator) paginator! : MatPaginator;
   @ViewChild(MatSort) sort! : MatSort;
 
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private _snackBar: MatSnackBar,
+    private _mascotaService: MascotaService) { }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
-    this.paginator._intl.itemsPerPageLabel = 'Items por pagina';
     this.dataSource.sort = this.sort;
+    if(this.dataSource.data.length > 0){
+      this.paginator._intl.itemsPerPageLabel = 'Items por pagina';
+    }
   }
 
   applyFilter(event: Event) {
@@ -43,7 +36,21 @@ export class ListadoMascotaComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  ngOnInit() {
+  obtenerMascotas(){
+    this.loading = true;
+    this._mascotaService.getMascotas().subscribe(
+      {next: data=>{
+        this.loading =false;
+        this.dataSource.data = data;
+      }, error: () => {
+        this.loading = false
+        alert('Ocurrio un error')
+      }}
+    )
+  }
+
+  ngOnInit():void {
+    this.obtenerMascotas();
   }
 
   eliminarMascota(){
@@ -56,5 +63,7 @@ export class ListadoMascotaComponent implements OnInit, AfterViewInit {
       });
     },2000)
   }
+
+
 
 }
