@@ -41,7 +41,7 @@
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="2">
-        <button [disabled]="form.invalid" class="btnAceptar" mat-raised-button color="primary">Aceptar</button>
+        <button [disabled]="form.invalid" class="btnAceptar" mat-raised-button color="primary" (click)="agregarMascota()">Aceptar</button>
         <button mat-raised-button routerLink="/listMascotas">Volver</button>
       </mat-grid-tile>
     </mat-grid-list>
