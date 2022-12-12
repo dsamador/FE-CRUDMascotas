@@ -45,11 +45,11 @@
           color="primary">Crear registro</button>
       </th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon routerLink="/verMascota/1"
+        <mat-icon routerLink="/verMascota/{{element.id}}"
           matTooltip="ver" class="search" fontIcon="search"></mat-icon>
-        <mat-icon routerLink="/editarMascota/1"
+        <mat-icon routerLink="/editarMascota/{{element.id}}"
           matTooltip="editar" class="edit" fontIcon="edit"></mat-icon>
-        <mat-icon (click)="eliminarMascota()"
+        <mat-icon (click)="eliminarMascota(element.id)"
           matTooltip="borrar" class="delete" fontIcon="delete"></mat-icon>
       </td>
     </ng-container>
